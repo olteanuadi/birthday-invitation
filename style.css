@@ -138,7 +138,7 @@ html, body {
 /* Taking the letter out of the seal */
 .take-letter-out {
     transition: transform 1s ease-in-out;
-    transform: translateY(calc(var(--height) * -3 + 50px)) scale(1.1);
+    transform: translateY(calc(var(--height) * -3 + 80px)) scale(1.1);
 }
 
 .move-paperclip1 {
