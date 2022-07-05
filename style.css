@@ -8,43 +8,96 @@ html, body {
 
 :root {
     --width: 300px;
-    --height: 370px;
+    --height: 440px;
+    --sealing-width: 80px;
+    --top-secret-width: 270px;
 }
 
-.letter-body {
-    position: relative;
-}
-
-.letter-container {
-    box-shadow: -20px 10px 50px black;
-    background-image: url("Assets/CardboardTexture.png");
-    background-size: cover;
-    background-position: center;
-}
-
-.letter-body-bottom {
+.letter-front {
     width: var(--width);
-    height: var(--width);
-    /* background: #825124; */
-    z-index: 0;
-}
-
-.letter-body-top {
-    border-top: calc((var(--height) - var(--width)) / 2) solid #000;
-    border-left: calc(var(--width) / 2) solid transparent;
-    border-right: calc(var(--width) / 2) solid transparent;
-    border-bottom: calc((var(--height) - var(--width)) / 2) transparent;
-    display: inline block;
-    z-index: 1;
-}
-
-/* .opening {
-    z-index: 2;
     position: relative;
-    display: grid;
-    transform: translateY(70px);
-    border-bottom: 20px solid transparent;
-    border-top: calc(var(--height) - var(--width)) solid #6e451e;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
+    z-index: 2;
+}
+
+.letter-back {
+    width: var(--width);
+    position: fixed;
+    z-index: 1;
+    transform: translateX(calc(0px - var(--width)));
+    box-shadow: -20px 20px 50px #000;
+    
+}
+
+.letter-seal-closed {
+    position: relative;
+    width: var(--width);
+    transform: translateY(calc(-50px - var(--height)));
+    z-index: 4;
+
+    transition: transform 1s ease-in;
+    transform-origin: top left;
+}
+
+.letter-seal-opened {
+    position: relative;
+    display: block;
+    width: var(--width);
+    transform: translateY(calc(-43px - var(--height))) scaleY(0);
+    transform-origin: bottom left;
+    opacity: 0;
+
+    transition: all 1s ease-out 1s;
+    /* visibility: hidden; */
+}
+
+/* Sealing Rubber Duck */
+.sealing {
+    position: relative;
+    display: block;
+    width: var(--sealing-width);
+    /* transform: ; */
+    transform: translateX(calc(var(--width) / 2 - var(--sealing-width) / 2)) translateY(calc(-20px - var(--sealing-width) - var(--height)));
+    z-index: 5;
+}
+
+.top-secret {
+    position: relative;
+    display: block;
+    width: var(--top-secret-width);
+    /* transform: ; */
+    transform: translateX(calc(var(--width) / 2 - var(--top-secret-width) / 2)) translateY(calc(0px - calc(var(--top-secret-width) / 4) - var(--height)));
+    z-index: 5;
+}
+
+.letter {
+    height: var(--height);
+    transition: transform 0.7s ease-out;
+}
+
+.toggle.letter {
+    transform: translateY(150px);
+    transition-delay: 0s;
+}
+
+.closed-seal-animation {
+    transform: translateY(calc(-43px - var(--height))) scaleY(0);
+}
+
+.open-seal-animation {
+    transform: translateY(calc(-43px - var(--height)));
+    opacity: 1;
+}
+/* .opac.letter {
+    animation: fade-out 0.5s 0.7s ease forwards;
 } */
+
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+

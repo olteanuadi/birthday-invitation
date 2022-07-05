@@ -8,14 +8,19 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="invisible"></div>
     <div class="letter">
-        <div class="opening"></div>
-        <div class="letter-container">
-            <div class="letter-body letter-body-top"></div>
-            <div class="letter-body letter-body-bottom"></div>
-        </div>
+        <!-- Letter Body -->
+        <img class="letter-front" src="Assets/LetterFront.png">
+        <img class="letter-back" src="Assets/LetterBack.png">
         <!-- Sealing -->
+        <img class="letter-seal-opened" src="Assets/LetterSealOpened.png">
+        <img class="letter-seal-closed" src="Assets/LetterSealClosed.png">
+        <img class="sealing" onclick="animation()" src="Assets/Ducky.png">
         <!-- Top Secret Image -->
+        <img class="top-secret" src="Assets/TopSecret.png">
+        
     </div>
 </body>
+<script src="script.js"></script>
 </html>
