@@ -115,7 +115,7 @@ html, body {
 }
 
 .opened-seal-animation {
-    transform: translateY(calc(-43px - var(--height)));
+    transform: translateY(calc(-44.5px - var(--height)));
     opacity: 1;
 }
 
