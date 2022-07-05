@@ -5,10 +5,11 @@ const letterSealOpened = document.querySelector(".letter-seal-opened");
 
 function animation() {
     letter.classList.toggle("toggle");
+    duckSeal.classList.toggle("opac");
     letterSealClosed.classList.toggle("closed-seal-animation");
     letterSealOpened.classList.toggle("open-seal-animation");
 
-    letter.classList.toggle("opac");
+    // letter.classList.toggle("opac");
 }
 
 // duckSeal.addEventListener("click", animation);
