@@ -3,7 +3,8 @@ html, body {
     height: 100vh;
     display: grid;
     place-content: center;
-    background: #231910;
+    background: hsl(28, 37%, 10%);
+    /* overflow-y: hidden; */
 }
 
 :root {
@@ -16,7 +17,7 @@ html, body {
 .letter-front {
     width: var(--width);
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .letter-back {
@@ -42,7 +43,7 @@ html, body {
     position: relative;
     display: block;
     width: var(--width);
-    transform: translateY(calc(-43px - var(--height))) scaleY(0);
+    transform: translateY(calc(-5px - var(--height))) scaleY(0);
     transform-origin: bottom left;
     opacity: 0;
 
@@ -70,35 +71,99 @@ html, body {
     z-index: 5;
 }
 
+/* Paperclip with me */
+.paperclip1 {
+    display: block;
+    position: relative;
+    opacity: 0;
+    width: 100px;
+    transform: translateY(calc(var(--height) * -3 - 20px)) translateX(-50px);
+    z-index: 6;
+}
+
+/* Paperclip with soliders */
+.paperclip2 {
+    position: relative;
+    opacity: 0;
+    width: 120px;
+    transform: translateY(calc(var(--height) * -3 - 130px)) translateX(calc(var(--width) - 60px));
+    z-index: 6;
+}
+
 .letter {
     height: var(--height);
-    transition: transform 0.7s ease-out;
 }
 
+/* The actual letter */
+.letter-paper {
+    position: relative;
+    width: var(--width);
+    z-index: 2;
+    transform: translateY(calc(var(--height) * -2 + 90px));
+}
+
+/* FIRST CLICK */
+/* Moves the seal body slightly lower*/
 .toggle.letter {
+    transition: transform 0.7s ease-out;
     transform: translateY(150px);
-    transition-delay: 0s;
 }
 
+/* Opening the seal cap animation */
 .closed-seal-animation {
     transform: translateY(calc(-43px - var(--height))) scaleY(0);
 }
 
-.open-seal-animation {
+.opened-seal-animation {
     transform: translateY(calc(-43px - var(--height)));
     opacity: 1;
 }
-/* .opac.letter {
-    animation: fade-out 0.5s 0.7s ease forwards;
-} */
-
 
 .move-ducky {
     transform: translateX(calc(var(--width) / 2 - var(--sealing-width) / 2)) translateY(calc(30px - var(--sealing-width) - var(--height)));
 }
 
+/* Moves the actual letter a bit upwards, waiting for second click */
+.move-letter-slightly {
+    transition: transform 1s ease-out 0.6s;
+    transform: translateY(calc(var(--height) * -2 + 50px));
+}
+
+/* SECOND CLICK */
+.move-seal-body.letter {
+    transition: transform 1s ease-out;
+    transform: translateY(350px);
+}
+
+/* Taking the letter out of the seal */
+.take-letter-out {
+    transition: transform 1s ease-in-out;
+    transform: translateY(calc(var(--height) * -3 + 50px)) scale(1.1);
+}
+
+.move-paperclip1 {
+    transition: transform 1s ease-out 1s;
+    transform: translateY(calc(var(--height) * -3 - 20px)) translateX(-20px);
+}
+
+.move-paperclip2 {
+    transition: transform 1s ease-out 1s;
+    transform: translateY(calc(var(--height) * -3 - 130px)) translateX(calc(var(--width) - 100px));
+}
+
+
+
+
 .opac {
     animation: fade-out 0.5s ease forwards;
+}
+
+.half-fade {
+    animation: half-fade 0.5s 1s ease forwards;
+}
+
+.fade-in {
+    animation: fade-in 0.5s 1s ease forwards;
 }
 
 @keyframes fade-out {
@@ -107,6 +172,24 @@ html, body {
     }
     to {
         opacity: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes half-fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
     }
 }
 
