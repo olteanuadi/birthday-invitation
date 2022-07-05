@@ -17,15 +17,17 @@ html, body {
 .letter-front {
     width: var(--width);
     position: relative;
+    box-shadow: -20px 20px 50px #000;
     z-index: 3;
 }
 
 .letter-back {
-    width: var(--width);
     position: fixed;
-    z-index: 1;
+    visibility: hidden;
+    width: var(--width);
     transform: translateX(calc(0px - var(--width)));
     box-shadow: -20px 20px 50px #000;
+    z-index: 1;
     
 }
 
@@ -96,6 +98,7 @@ html, body {
 
 /* The actual letter */
 .letter-paper {
+    visibility: hidden;
     position: relative;
     width: var(--width);
     z-index: 2;
@@ -123,6 +126,11 @@ html, body {
     transform: translateX(calc(var(--width) / 2 - var(--sealing-width) / 2)) translateY(calc(30px - var(--sealing-width) - var(--height)));
 }
 
+/* Removes shadow from 'letter-front' when 'letter-back' loads */
+.remove-shadow {
+    animation: remove-shadow 0s ease forwards;
+}
+
 /* Moves the actual letter a bit upwards, waiting for second click */
 .move-letter-slightly {
     transition: transform 1s ease-out 0.6s;
@@ -130,6 +138,7 @@ html, body {
 }
 
 /* SECOND CLICK */
+/* Moves the seal body slightly lower */
 .move-seal-body.letter {
     transition: transform 1s ease-out;
     transform: translateY(350px);
@@ -141,6 +150,7 @@ html, body {
     transform: translateY(calc(var(--height) * -3 + 80px)) scale(1.1);
 }
 
+/* Paperclip photos move into place */
 .move-paperclip1 {
     transition: transform 1s ease-out 1s;
     transform: translateY(calc(var(--height) * -3 - 20px)) translateX(-20px);
@@ -150,6 +160,7 @@ html, body {
     transition: transform 1s ease-out 1s;
     transform: translateY(calc(var(--height) * -3 - 130px)) translateX(calc(var(--width) - 100px));
 }
+
 
 
 
@@ -164,6 +175,29 @@ html, body {
 
 .fade-in {
     animation: fade-in 0.5s 1s ease forwards;
+}
+
+/* Loading necessary parts only when needed (perfromance) */
+.load {
+    animation: load 0s ease forwards;
+}
+
+@keyframes remove-shadow {
+    from {
+        box-shadow: -20px 20px 50px #000;
+    }
+    to {
+        box-shadow: none;
+    }
+}
+
+@keyframes load {
+    from {
+        visibility: hidden;
+    }
+    to {
+        visibility: visible;
+    }
 }
 
 @keyframes fade-out {

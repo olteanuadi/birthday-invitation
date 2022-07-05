@@ -19,19 +19,24 @@ var secondClick = true;
 
 function animation() {
     if (firstClick) { // First click, opening the seal
+        // Loading more parts after first click, not to load them at page load
+        messagePaper.classList.toggle("load");
+        sealBack.classList.toggle("load");
+        sealFront.classList.toggle("remove-shadow");
+
         letter.classList.toggle("toggle");
         duckSeal.classList.toggle("move-ducky");
         letterSealClosed.classList.toggle("closed-seal-animation");
         letterSealOpened.classList.toggle("opened-seal-animation");
         messagePaper.classList.toggle("move-letter-slightly");
 
-        // letter.classList.toggle("opac");
         firstClick = false;
         return;
     } else if (secondClick) { // Second click, displaying the letter
         messagePaper.classList.toggle("take-letter-out");
         letter.classList.toggle("move-seal-body");
         letterSealClosed.classList.toggle("opac");
+        // Lowering opacity for seal body elements
         for (let i = 0; i < sealElements.length; ++i) {
             sealElements[i].classList.toggle("half-fade");
         }
