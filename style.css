@@ -1,0 +1,50 @@
+html, body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    background: #231910;
+}
+
+:root {
+    --width: 300px;
+    --height: 370px;
+}
+
+.letter-body {
+    position: relative;
+}
+
+.letter-container {
+    box-shadow: -20px 10px 50px black;
+    background-image: url("Assets/CardboardTexture.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.letter-body-bottom {
+    width: var(--width);
+    height: var(--width);
+    /* background: #825124; */
+    z-index: 0;
+}
+
+.letter-body-top {
+    border-top: calc((var(--height) - var(--width)) / 2) solid #000;
+    border-left: calc(var(--width) / 2) solid transparent;
+    border-right: calc(var(--width) / 2) solid transparent;
+    border-bottom: calc((var(--height) - var(--width)) / 2) transparent;
+    display: inline block;
+    z-index: 1;
+}
+
+/* .opening {
+    z-index: 2;
+    position: relative;
+    display: grid;
+    transform: translateY(70px);
+    border-bottom: 20px solid transparent;
+    border-top: calc(var(--height) - var(--width)) solid #6e451e;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+} */
