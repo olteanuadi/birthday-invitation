@@ -57,6 +57,7 @@ html, body {
     width: var(--sealing-width);
     /* transform: ; */
     transform: translateX(calc(var(--width) / 2 - var(--sealing-width) / 2)) translateY(calc(-20px - var(--sealing-width) - var(--height)));
+    transition: transform 0.7s ease-out;
     z-index: 5;
 }
 
@@ -90,6 +91,11 @@ html, body {
 /* .opac.letter {
     animation: fade-out 0.5s 0.7s ease forwards;
 } */
+
+
+.move-ducky {
+    transform: translateX(calc(var(--width) / 2 - var(--sealing-width) / 2)) translateY(calc(30px - var(--sealing-width) - var(--height)));
+}
 
 .opac {
     animation: fade-out 0.5s ease forwards;
